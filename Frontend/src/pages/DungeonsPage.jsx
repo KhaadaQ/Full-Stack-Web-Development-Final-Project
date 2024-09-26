@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDungeons } from '../core/redux/actions/dungeonActions';
+import DungeonList from '../components/DungeonList';
 import { useNavigate } from 'react-router-dom';
 
 const DungeonsPage = () => {
@@ -33,11 +34,7 @@ const DungeonsPage = () => {
     <div>
       <h1>Listado de Mazmorras</h1>
       {dungeons && dungeons.length > 0 ? (
-        <ul>
-          {dungeons.map((dungeon) => (
-            <li key={dungeon.id}>{dungeon.name}</li>
-          ))}
-        </ul>
+        <DungeonList dungeons={dungeons} />
       ) : (
         <p>No se encontraron mazmorras.</p>
       )}
