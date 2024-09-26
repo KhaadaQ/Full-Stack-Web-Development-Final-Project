@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 function CharactersPage() {
   const [characters, setCharacters] = useState([]);
+  const [name, setName] = useState('');
+  const [classType, setClassType] = useState('');
+  const [level, setLevel] = useState(1);
+  const [editMode, setEditMode] = useState(false);
+  const [characterToEdit, setCharacterToEdit] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -11,7 +18,7 @@ function CharactersPage() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -25,6 +32,72 @@ function CharactersPage() {
     fetchCharacters();
   }, []);
 
+  const handleSaveCharacter = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+
+    if (editMode) {
+      try {
+        const response = await fetch(`http://localhost:3000/characters/${characterToEdit.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ name, classType, level }),
+        });
+
+        const data = await response.json();
+        if (data.message === 'Personaje actualizado') {
+          const updatedCharacters = characters.map((char) =>
+            char.id === characterToEdit.id ? { ...char, name, classType, level } : char
+          );
+          setCharacters(updatedCharacters);
+          alert('Personaje actualizado con éxito');
+          setEditMode(false);
+          setCharacterToEdit(null);
+          setName('');
+          setClassType('');
+          setLevel(1);
+        } else {
+          alert('Error al actualizar el personaje');
+        }
+      } catch (error) {
+        console.error('Error al actualizar el personaje:', error);
+      }
+    } else {
+      try {
+        const response = await fetch('http://localhost:3000/characters/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ name, classType, level }),
+        });
+
+        const data = await response.json();
+        if (data.characterId) {
+          const newCharacter = {
+            id: data.characterId,
+            name,
+            classType,
+            level,
+          };
+          setCharacters([...characters, newCharacter]);
+          setName('');
+          setClassType('');
+          setLevel(1);
+          alert('Personaje creado con éxito');
+        } else {
+          alert('Error al crear el personaje');
+        }
+      } catch (error) {
+        console.error('Error al crear el personaje:', error);
+      }
+    }
+  };
+
   const handleDeleteCharacter = async (id) => {
     try {
       const token = localStorage.getItem('token');
@@ -32,7 +105,7 @@ function CharactersPage() {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -49,23 +122,68 @@ function CharactersPage() {
     }
   };
 
+  const handleEditCharacter = (character) => {
+    setEditMode(true);
+    setCharacterToEdit(character);
+    setName(character.name);
+    setClassType(character.classType);
+    setLevel(character.level);
+  };
+
   return (
     <div>
-      <h1>Mis Personajes</h1>
+      <h1>Gestionar Personajes</h1>
+
+      <h2>{editMode ? 'Editar Personaje' : 'Crear Personaje'}</h2>
+      <form onSubmit={handleSaveCharacter}>
+        <div>
+          <label>Nombre:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Clase:</label>
+          <input
+            type="text"
+            value={classType}
+            onChange={(e) => setClassType(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Nivel:</label>
+          <input
+            type="number"
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
+            required
+            min="1"
+            max="100"
+          />
+        </div>
+        <button type="submit">{editMode ? 'Actualizar Personaje' : 'Crear Personaje'}</button>
+      </form>
+
+      <h2>Lista de personajes</h2>
       {characters.length > 0 ? (
         <ul>
           {characters.map((character) => (
-            <li key={character.id}>
+            <li key={character.id || character.characterId}>
               {character.name} - {character.classType} - Nivel: {character.level}
-              <button onClick={() => handleDeleteCharacter(character.id)}>
-                Eliminar
-              </button>
+              <button onClick={() => handleEditCharacter(character)}>Editar</button>
+              <button onClick={() => handleDeleteCharacter(character.id || character.characterId)}>Eliminar</button>
             </li>
           ))}
         </ul>
       ) : (
         <p>No tienes personajes creados.</p>
       )}
+
+      <button onClick={() => navigate('/dashboard')}>Volver al Dashboard</button>
     </div>
   );
 }

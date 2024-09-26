@@ -29,7 +29,7 @@ function LoginPage() {
         if (response.ok && data.token) { 
           localStorage.setItem('token', data.token); 
           console.log('Login exitoso:', data);
-          navigate('/dungeons'); 
+          navigate('/dashboard'); 
         } else {
           alert('Login fallido: ' + data.message);
         }
