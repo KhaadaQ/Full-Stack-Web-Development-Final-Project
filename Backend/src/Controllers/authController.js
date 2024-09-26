@@ -22,9 +22,9 @@ const register = async (req, res) => {
     const subject = '¡Gracias por registrarte en nuestra aplicación!';
     const emailContent = emailSignupTemplate
       .replaceAll('{{name}}', username)
-      .replaceAll('{{your_website_name}}', 'World of Warcraft API App') // Reemplaza con el nombre de tu app
-      .replaceAll('[Your Website URL]', 'https://yourwebsite.com') // Reemplaza con la URL real
-      .replaceAll('[Contact URL]', 'https://yourwebsite.com/contact'); // Reemplaza con el contacto real
+      .replaceAll('{{your_website_name}}', 'World of Warcraft API App') 
+      .replaceAll('[Your Website URL]', 'https://yourwebsite.com') 
+      .replaceAll('[Contact URL]', 'https://yourwebsite.com/contact'); 
 
     await sendMail(email, subject, emailContent); // Enviar el correo
 
@@ -35,7 +35,7 @@ const register = async (req, res) => {
   }
 };
 
-// Login de usuario (sin cambios)
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 

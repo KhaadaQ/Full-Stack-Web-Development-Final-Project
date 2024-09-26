@@ -1,4 +1,4 @@
-const fetch = require('node-fetch'); // Usar 'node-fetch' en lugar de axios para las peticiones
+const fetch = require('node-fetch'); 
 require('dotenv').config();
 
 // Función para obtener el access token de Blizzard

@@ -4,6 +4,7 @@ const mysql = require("mysql2");
 require("dotenv").config();  // Cargar las variables de entorno desde el archivo .env
 const authRouter = require('./src/Routes/authRouter');
 const wowRouter = require('./src/Routes/wowRouter');
+const characterRouter = require('./src/Routes/characterRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;  // Usa el puerto 3000 o el definido en .env
@@ -14,13 +15,14 @@ app.use(cors());
 
 app.use('/auth', authRouter);
 app.use('/wow', wowRouter);
+app.use('/characters', characterRouter);
 
 // Conectar a la base de datos MySQL
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,         // Definido en el archivo .env
-  user: process.env.DB_USER,         // Definido en el archivo .env
-  password: process.env.DB_PASSWORD, // Definido en el archivo .env
-  database: process.env.DB_NAME      // Definido en el archivo .env
+  host: process.env.DB_HOST,         
+  user: process.env.DB_USER,         
+  password: process.env.DB_PASSWORD, 
+  database: process.env.DB_NAME      
 });
 
 // Conexión a MySQL
