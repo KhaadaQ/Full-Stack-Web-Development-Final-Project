@@ -27,9 +27,9 @@ const getAccessToken = async () => {
   }
 };
 
-// Función para obtener los datos de mazmorras de WoW
+
 const getDungeons = async () => {
-  const accessToken = await getAccessToken(); // Obtener el token de acceso
+  const accessToken = await getAccessToken(); 
   
   const url = 'https://us.api.blizzard.com/data/wow/journal-instance/index?namespace=static-us&locale=en_US';
 
@@ -48,5 +48,24 @@ const getDungeons = async () => {
     throw error;
   }
 };
+const getItems = async () => {
+  const accessToken = await getAccessToken(); 
 
-module.exports = { getDungeons };
+  const url = 'https://us.api.blizzard.com/data/wow/item-class/index?namespace=static-us&locale=en_US'; 
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const data = await response.json();
+    return data; 
+  } catch (error) {
+    console.error('Error obteniendo datos de items:', error.message);
+    throw error;
+  }
+};
+
+module.exports = { getDungeons, getItems };
