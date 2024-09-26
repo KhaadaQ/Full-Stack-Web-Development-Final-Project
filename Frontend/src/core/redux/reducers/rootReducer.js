@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
+import authReducer from './authReducer';
+import dungeonReducer from './dungeonReducer';
 
 
 const rootReducer = combineReducers({
-  // auth: authReducer,
+  auth: authReducer,
   // characters: characterReducer,
-  // dungeons: dungeonReducer,
+  dungeons: dungeonReducer,
 });
 
 export default rootReducer;
