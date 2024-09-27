@@ -5,7 +5,7 @@ const DashboardPage = () => {
     return (
         <div>
             <h1>Welcome to main menu</h1>
-            <p>Yo can:</p>
+            <p>You can:</p>
             <ul>
                 <li>
                     <Link to="/characters">Manage characters</Link>

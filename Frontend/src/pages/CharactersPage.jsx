@@ -126,7 +126,7 @@ function CharactersPage() {
       <h1>Manage Characters</h1>
 
       <div className="character-form">
-        <h2>{editMode ? 'Editar Personaje' : 'Crear Personaje'}</h2>
+        <h2>{editMode ? 'Update Character' : 'Create Character'}</h2>
         <form onSubmit={handleSaveCharacter}>
           <div>
             <label>Name:</label>
@@ -157,7 +157,7 @@ function CharactersPage() {
               max="100"
             />
           </div>
-          <button type="submit">{editMode ? 'Actualizar Personaje' : 'Crear Personaje'}</button>
+          <button type="submit">{editMode ? 'Update Character' : 'Create Character'}</button>
         </form>
       </div>
 

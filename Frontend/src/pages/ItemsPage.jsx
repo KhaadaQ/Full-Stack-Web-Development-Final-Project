@@ -39,7 +39,7 @@ const ItemsPage = () => {
           ))}
         </ul>
       ) : (
-        <p>No items found</p>
+        <p>Loading...</p>
       )}
       <button onClick={() => navigate('/dashboard')}>Back to main menu</button>
     </div>
