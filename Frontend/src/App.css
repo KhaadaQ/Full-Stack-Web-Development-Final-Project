@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+/* Logo Styles */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +40,102 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Character Page Styles */
+.characters-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.character-form, .character-list {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #433878;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.character-form form, .character-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.character-form input, .character-form button {
+  width: calc(100% - 20px); /* Added padding on the right */
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.character-list button {
+  margin-left: 10px;
+}
+
+/* Items Page Styles */
+.items-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.item-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 960px;
+}
+
+.item-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Button Styles */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .character-form, .character-list {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .item-list {
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-form, .character-list {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .character-form input, .character-form button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .item-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
 }

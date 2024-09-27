@@ -9,7 +9,7 @@ router.post('/create', authenticate, create);
 
 router.get('/', authenticate, getAll);
 
-router.put('/update', authenticate, update);
+router.put('/:characterId', authenticate, update);
 
 router.delete('/:characterId', authenticate, remove);
 

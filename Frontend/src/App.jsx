@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import CharactersPage from './pages/CharactersPage'; 
 import DungeonsPage from './pages/DungeonsPage'; 
 import ItemsPage from './pages/ItemsPage'; 
+import  './App.css';
 
 function App() {
   return (

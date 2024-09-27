@@ -27,7 +27,8 @@ const {
   };
   
   const update = async (req, res) => {
-    const { characterId, name, classType, level } = req.body;
+    const { characterId } = req.params; 
+    const { name, classType, level } = req.body;
   
     try {
       const updated = await updateCharacter(characterId, name, classType, level);
