@@ -42,7 +42,7 @@ function LoginPage() {
 
   return (
     <div>
-      <h1>Página de Inicio de Sesión</h1>
+      <h1>Login Page</h1>
       <form onSubmit={formik.handleSubmit}>
         <div>
           <label>Email:</label>
@@ -59,7 +59,7 @@ function LoginPage() {
         </div>
 
         <div>
-          <label>Contraseña:</label>
+          <label>Password:</label>
           <input
             type="password"
             name="password"
@@ -72,7 +72,7 @@ function LoginPage() {
           ) : null}
         </div>
 
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );

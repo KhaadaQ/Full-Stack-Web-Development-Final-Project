@@ -32,13 +32,13 @@ const DungeonsPage = () => {
 
   return (
     <div>
-      <h1>Listado de Mazmorras</h1>
+      <h1>Dungeons List</h1>
       {dungeons && dungeons.length > 0 ? (
         <DungeonList dungeons={dungeons} />
       ) : (
-        <p>No se encontraron mazmorras.</p>
+        <p>Loading...</p>
       )}
-      <button onClick={() => navigate('/dashboard')}>Volver al Dashboard</button>
+      <button onClick={() => navigate('/dashboard')}>Back to main menu</button>
     </div>
   );
 };

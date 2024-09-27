@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 const HomePage = () => {
   return (
     <div>
-      <h1>Bienvenido a nuestra aplicación</h1>
-      <p>Si ya tienes una cuenta, inicia sesión. Si no, regístrate ahora.</p>
+      <h1>Welcome to our app</h1>
+      <p>Login or register if you still don't have an account</p>
       <div>
         <Link to="/login">
-          <button>Iniciar Sesión</button>
+          <button>Login</button>
         </Link>
         <Link to="/register">
-          <button>Registrarse</button>
+          <button>Register</button>
         </Link>
       </div>
     </div>

@@ -55,10 +55,10 @@ const UpdateCharacterPage = () => {
   };
   return (
     <div>
-      <h1>Actualizar Personaje</h1>
+      <h1>Update Character</h1>
       <form onSubmit={handleUpdateCharacter}>
         <div>
-          <label>Nombre del personaje:</label>
+          <label>Character's name:</label>
           <input
             type="text"
             value={name}
@@ -67,7 +67,7 @@ const UpdateCharacterPage = () => {
           />
         </div>
         <div>
-          <label>Clase:</label>
+          <label>Class:</label>
           <input
             type="text"
             value={classType}
@@ -76,7 +76,7 @@ const UpdateCharacterPage = () => {
           />
         </div>
         <div>
-          <label>Nivel:</label>
+          <label>Level:</label>
           <input
             type="number"
             value={level}
@@ -86,7 +86,7 @@ const UpdateCharacterPage = () => {
             max="100"
           />
         </div>
-        <button type="submit">Actualizar Personaje</button>
+        <button type="submit">Update Character</button>
       </form>
     </div>
   )

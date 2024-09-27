@@ -31,10 +31,10 @@ const CreateCharacterPage = () => {
     };
     return (
         <div>
-            <h1>Crear Personaje</h1>
+            <h1>Create Character</h1>
             <form onSubmit={handleCreateCharacter}>
                 <div>
-                    <label>Nombre del personaje:</label>
+                    <label>Character's name:</label>
                     <input
                         type="text"
                         value={name}
@@ -43,7 +43,7 @@ const CreateCharacterPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Clase:</label>
+                    <label>Class:</label>
                     <input
                         type="text"
                         value={classType}
@@ -52,7 +52,7 @@ const CreateCharacterPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Nivel:</label>
+                    <label>Level:</label>
                     <input
                         type="number"
                         value={level}
@@ -62,7 +62,7 @@ const CreateCharacterPage = () => {
                         max="100"
                     />
                 </div>
-                <button type="submit">Crear Personaje</button>
+                <button type="submit">Create Character</button>
             </form>
         </div>
     )

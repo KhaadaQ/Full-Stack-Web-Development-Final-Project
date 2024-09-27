@@ -29,7 +29,7 @@ const ItemsPage = () => {
 
   return (
     <div className="items-page">
-      <h1>Items y Loot</h1>
+      <h1>Items</h1>
       {items.length > 0 ? (
         <ul className="item-list">
           {items.map((item) => (
@@ -39,9 +39,9 @@ const ItemsPage = () => {
           ))}
         </ul>
       ) : (
-        <p>No se encontraron items.</p>
+        <p>No items found</p>
       )}
-      <button onClick={() => navigate('/dashboard')}>Volver a Dashboard</button>
+      <button onClick={() => navigate('/dashboard')}>Back to main menu</button>
     </div>
   );
 };

@@ -35,10 +35,10 @@ const RegisterPage = () => {
 
     return (
         <div>
-            <h1>Registro</h1>
+            <h1>Register</h1>
             <form onSubmit={handleRegister}>
                 <div>
-                    <label>Nombre de Usuario:</label>
+                    <label>Username:</label>
                     <input
                         type="text"
                         value={username}
@@ -56,7 +56,7 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Contraseña:</label>
+                    <label>Password:</label>
                     <input
                         type="password"
                         value={password}
@@ -64,7 +64,7 @@ const RegisterPage = () => {
                         required
                     />
                 </div>
-                <button type="submit">Registrarse</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )

@@ -123,13 +123,13 @@ function CharactersPage() {
 
   return (
     <div className="characters-page">
-      <h1>Gestionar Personajes</h1>
+      <h1>Manage Characters</h1>
 
       <div className="character-form">
         <h2>{editMode ? 'Editar Personaje' : 'Crear Personaje'}</h2>
         <form onSubmit={handleSaveCharacter}>
           <div>
-            <label>Nombre:</label>
+            <label>Name:</label>
             <input
               type="text"
               value={name}
@@ -138,7 +138,7 @@ function CharactersPage() {
             />
           </div>
           <div>
-            <label>Clase:</label>
+            <label>Class:</label>
             <input
               type="text"
               value={classType}
@@ -147,7 +147,7 @@ function CharactersPage() {
             />
           </div>
           <div>
-            <label>Nivel:</label>
+            <label>Level:</label>
             <input
               type="number"
               value={level}
@@ -162,23 +162,23 @@ function CharactersPage() {
       </div>
 
       <div className="character-list">
-        <h2>Lista de personajes</h2>
+        <h2>Characters list</h2>
         {characters.length > 0 ? (
           <ul>
             {characters.map((character) => (
               <li key={character.id}>
-                {character.name} - {character.classType} - Nivel: {character.level}
-                <button onClick={() => handleEditCharacter(character)}>Editar</button>
-                <button onClick={() => handleDeleteCharacter(character.id)}>Eliminar</button>
+                {character.name} - {character.classType} - Level: {character.level}
+                <button onClick={() => handleEditCharacter(character)}>Edit</button>
+                <button onClick={() => handleDeleteCharacter(character.id)}>Delete</button>
               </li>
             ))}
           </ul>
         ) : (
-          <p>No tienes personajes creados.</p>
+          <p>Loading...</p>
         )}
       </div>
 
-      <button onClick={() => navigate('/dashboard')}>Volver al Dashboard</button>
+      <button onClick={() => navigate('/dashboard')}>Back to main menu</button>
     </div>
   );
 }
